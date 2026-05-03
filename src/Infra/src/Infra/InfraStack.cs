@@ -34,17 +34,9 @@ public class InfraStack : Stack
             Environment = new Dictionary<string, string>
             {
                 { "BUCKET_NAME", bucket.BucketName }
-            }
+            },
+            LogRetention = RetentionDays.ONE_WEEK
         });
-
-        var logGroup = new LogGroup(this, "LambdaGroup", new LogGroupProps
-        {
-            LogGroupName = $"/aws/lambda/{lambda.FunctionName}",
-            Retention = RetentionDays.ONE_WEEK,
-            RemovalPolicy = RemovalPolicy.DESTROY
-        });
-
-        logGroup.Node.AddDependency(lambda);
 
         // Permissions
         bucket.GrantReadWrite(lambda);

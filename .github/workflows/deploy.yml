@@ -41,9 +41,9 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: CDK Bootstrap
+        working-directory: src/Infra
         run: cdk bootstrap
 
       - name: Deploy CDK
-        run: |
-          cd src/Infra
-          cdk deploy --require-approval never
+        working-directory: src/Infra
+        run: cdk deploy --require-approval never

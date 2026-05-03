@@ -28,7 +28,7 @@ public class InfraStack : Stack
             Runtime = Runtime.DOTNET_8,
             // This line means Run: Function::FunctionHandler from S3LambdaFileProcessor.dll
             Handler = "S3LambdaFileProcessor::Function::FunctionHandler",
-            Code = Code.FromAsset("../../../S3LambdaFileProcessor/bin/Release/net8.0"),
+            Code = Code.FromAsset("../../../publish"),
             MemorySize = 256,
             Timeout = Duration.Seconds(30),
             Environment = new Dictionary<string, string>
